@@ -344,6 +344,15 @@
     
     ```
 
+- 修改项目git提交忽略文件配置，禁止上传node_modules和dist包 .gitignre
+
+  - ```
+    //在项目根目录新建文件 .gitignre
+    
+    node_modules
+    dist
+    ```
+
     
 
 
