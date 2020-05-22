@@ -209,7 +209,7 @@
     				 的配置就很有用,不需要每个项目根目录下都有node_modules文件夹,
     				 这样可以节省磁盘空间
     				*/
-    				exclude: '/node_modules/', 
+    				exclude: ['/node_modules/','/source/'],
     				use: {
     					loader: 'babel-loader',
     					options: {
