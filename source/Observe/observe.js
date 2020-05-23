@@ -1,11 +1,17 @@
 import {observe} from './index.js'
+import {arrayMethods,observeArray} from './array.js'
 class Observe{
 	// console.log('数据进入观察者模式',data)
 	/*
 		这块的data 为vm_data
 	*/
 	constructor(data) {
-		this.awake(data)
+		if(Array.isArray(data)) {
+			data.__proto__ = arrayMethods
+			observeArray()
+		}else{
+			this.awake(data)
+		}
 	}
 	awake(data) {
 		var keys = Object.keys(data)
@@ -33,7 +39,7 @@ export function listenData(data,key,value) {
 				value = newValue
 				// 递归判断数据是不是对象
 				observe(value)
-			}
+			}			
 		}
 	})
 }
