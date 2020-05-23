@@ -1,5 +1,6 @@
 import {observe} from './index.js'
 import {arrayMethods,observeArray} from './array.js'
+import Dep from './dep.js'
 class Observe{
 	// console.log('数据进入观察者模式',data)
 	/*
@@ -27,19 +28,23 @@ class Observe{
 export function listenData(data,key,value) {
 	//观察数据是不是对象
 	observe(value)
-	
+    let dep = new Dep() // 新增代码：一个key对应一个dep
 	Object.defineProperty(data,key,{
 		get() {
+			if(Dep.target) {
+				//让dep保存watcher  也让watcher保存dep
+				dep.depend()
+			}
 			return value
 		},
 		set(newValue) {
-			if(newValue === value) {
-				return 
-			}else{
+			if(newValue === value) return 			
 				value = newValue
 				// 递归判断数据是不是对象
 				observe(value)
-			}			
+				// 当设置属性的时候，实现更新
+				dep.notify()
+				
 		}
 	})
 }

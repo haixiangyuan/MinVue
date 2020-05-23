@@ -13,12 +13,12 @@ module.exports = {
 	output: {
 		// path 组件可以获取当前项目路径		
 		path: path.resolve(__dirname,'dist'),  //知道打包路径为根目录下dist文件夹 
-		filename: 'MinVue.mini.js'  //指定打包产品文件名称为 MinVue.min.js
+		filename: 'MinVue.min.js'  //指定打包产品文件名称为 MinVue.min.js
 	},
-	devServer: {
-	    contentBase: './dist',
-	    hot: true
-	},
+	// devServer: {
+	//     contentBase: './dist',
+	//     hot: true
+	// },
 	devtool: 'inline-source-map',//生成一个 DataUrl 形式的 SourceMap 文件.
 	module: {
 		rules: [

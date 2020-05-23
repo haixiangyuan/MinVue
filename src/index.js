@@ -16,6 +16,15 @@ const vm = new MinVue({
 	}
 })
 
+const vm1 = new MinVue({
+	el: '#h11',
+	data() {
+		return {
+			author: 'Mr.right',
+			
+		}
+	}
+})
 
 vm._data.projectName = 'MintVue Plus'
 vm._data.projectInfo = {
